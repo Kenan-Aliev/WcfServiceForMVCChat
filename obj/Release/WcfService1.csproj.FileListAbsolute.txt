@@ -1,0 +1,13 @@
+C:\Other\C#\WcfService1\bin\WcfService1.dll.config
+C:\Other\C#\WcfService1\bin\WcfService1.dll
+C:\Other\C#\WcfService1\bin\WcfService1.pdb
+C:\Other\C#\WcfService1\bin\EntityFramework.dll
+C:\Other\C#\WcfService1\bin\EntityFramework.SqlServer.dll
+C:\Other\C#\WcfService1\bin\EntityFramework.xml
+C:\Other\C#\WcfService1\bin\EntityFramework.SqlServer.xml
+C:\Other\C#\WcfService1\bin\ru\EntityFramework.resources.dll
+C:\Other\C#\WcfService1\obj\Release\WcfService1.csproj.AssemblyReference.cache
+C:\Other\C#\WcfService1\obj\Release\WcfService1.csproj.CoreCompileInputs.cache
+C:\Other\C#\WcfService1\obj\Release\WcfService1.csproj.CopyComplete
+C:\Other\C#\WcfService1\obj\Release\WcfService1.dll
+C:\Other\C#\WcfService1\obj\Release\WcfService1.pdb
