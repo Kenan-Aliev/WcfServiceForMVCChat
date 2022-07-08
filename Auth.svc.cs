@@ -11,7 +11,7 @@ namespace WcfService1
     // ПРИМЕЧАНИЕ. Чтобы запустить клиент проверки WCF для тестирования службы, выберите элементы Auth.svc или Auth.svc.cs в обозревателе решений и начните отладку.
     public class Auth : IAuth
     {
-        ChatModelsContext chatModelsContext = new ChatModelsContext();
+        ChatDataBase chatModelsContext = new ChatDataBase();
         public users Login(users user)
         {
             users candidate = chatModelsContext.users.SingleOrDefault(u => u.UserName == user.UserName);

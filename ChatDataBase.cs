@@ -1,25 +1,26 @@
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Linq;
 
 namespace WcfService1
 {
-    public partial class ChatModelsContext : DbContext
+    public partial class ChatDataBase : DbContext
     {
-        public ChatModelsContext()
-            : base("name=ChatModels")
+        public ChatDataBase()
+            : base("name=ChatDataBase")
         {
         }
 
         public virtual DbSet<chats> chats { get; set; }
+        public virtual DbSet<groups> groups { get; set; }
+        public virtual DbSet<groups_users> groups_users { get; set; }
         public virtual DbSet<messages> messages { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<users> users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<chats>()
-                .HasMany(e => e.messages)
-                .WithRequired(e => e.chats)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<users>()
                 .HasMany(e => e.chats)
                 .WithRequired(e => e.users)

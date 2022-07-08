@@ -11,7 +11,7 @@ namespace WcfService1
     // ПРИМЕЧАНИЕ. Чтобы запустить клиент проверки WCF для тестирования службы, выберите элементы ChatService.svc или ChatService.svc.cs в обозревателе решений и начните отладку.
     public class ChatService : IChatService
     {
-        ChatModelsContext chatModelsContext = new ChatModelsContext();
+        ChatDataBase chatModelsContext = new ChatDataBase();
         public users ClientConnected(string userName,string connectionId)
         {
             users user = chatModelsContext.users.SingleOrDefault(u => u.UserName == userName);

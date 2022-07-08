@@ -6,26 +6,14 @@ namespace WcfService1
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class messages
+    public partial class groups_users
     {
         [Key]
-        public int Message_ID { get; set; }
-
-        public int? Chat_ID { get; set; }
+        public int Groups_Users_ID { get; set; }
 
         public int? Group_ID { get; set; }
 
-        public int From_User { get; set; }
-
-        public DateTime Send_Date { get; set; }
-
-        public bool? IsRead { get; set; }
-
-        [Required]
-        [StringLength(100)]
-        public string Message { get; set; }
-
-        public virtual chats chats { get; set; }
+        public int? User_ID { get; set; }
 
         public virtual groups groups { get; set; }
 

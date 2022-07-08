@@ -6,38 +6,21 @@ namespace WcfService1
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class users
+    public partial class groups
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public users()
+        public groups()
         {
-            chats = new HashSet<chats>();
-            chats1 = new HashSet<chats>();
             groups_users = new HashSet<groups_users>();
             messages = new HashSet<messages>();
         }
 
         [Key]
-        public int User_ID { get; set; }
+        public int Group_ID { get; set; }
 
         [Required]
-        [StringLength(30)]
-        public string UserName { get; set; }
-
-        [Required]
-        [StringLength(100)]
-        public string Password { get; set; }
-
-        [StringLength(100)]
-        public string Connection_Id { get; set; }
-
-        public bool? IsOnline { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<chats> chats { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<chats> chats1 { get; set; }
+        [StringLength(50)]
+        public string Group_Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<groups_users> groups_users { get; set; }

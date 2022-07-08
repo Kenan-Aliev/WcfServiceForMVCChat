@@ -22,5 +22,8 @@ namespace WcfService1
 
         [OperationContract]
         users ClientDisconnected(string ConnectionID);
+
+
+        
     }
 }
