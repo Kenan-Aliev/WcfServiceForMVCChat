@@ -53,7 +53,7 @@ namespace WcfService1
             messages newMessage = new messages() { Group_ID = group.Group_ID, From_User = fromUserId, Send_Date = DateTime.Now, Message = message, IsRead = false };
             chatModelsContext.messages.Add(newMessage);
             chatModelsContext.SaveChanges();
-            return newMessage;
+            return new messages() { Message_ID = newMessage.Message_ID,From_User = newMessage.From_User,Send_Date = newMessage.Send_Date,Message = newMessage.Message,IsRead = newMessage.IsRead};
         }
 
         public List<messages> GetGroupMessages(int groupId)

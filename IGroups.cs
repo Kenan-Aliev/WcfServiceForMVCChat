@@ -25,6 +25,7 @@ namespace WcfService1
         List<messages> GetGroupMessages(int groupId);
 
         [OperationContract]
+        [FaultContract(typeof(ServiceError))]
         users AddUserToGroup(int userID, int groupID);
 
         [OperationContract]
