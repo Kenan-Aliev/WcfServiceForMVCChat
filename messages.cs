@@ -17,6 +17,10 @@ namespace WcfService1
 
         public int From_User { get; set; }
 
+        [Required]
+        [StringLength(30)]
+        public string From_UserName { get; set; }
+
         public DateTime Send_Date { get; set; }
 
         public bool? IsRead { get; set; }

@@ -11,7 +11,7 @@ namespace WcfService1
     // ПРИМЕЧАНИЕ. Чтобы запустить клиент проверки WCF для тестирования службы, выберите элементы ChatService.svc или ChatService.svc.cs в обозревателе решений и начните отладку.
     public class ChatService : IChatService
     {
-        ChatDataBase chatModelsContext = new ChatDataBase();
+        ChatModels chatModelsContext = new ChatModels();
         public users ClientConnected(string userName,string connectionId)
         {
             users user = chatModelsContext.users.SingleOrDefault(u => u.UserName == userName);
@@ -48,13 +48,14 @@ namespace WcfService1
                     Message = m.Message,
                     IsRead = m.IsRead,
                     Send_Date = m.Send_Date,
-                    From_User = m.From_User
+                    From_User = m.From_User,
+                    From_UserName = m.From_UserName
                 }).
             Where(a => (a.User1 == user1_id || a.User1 == user2_id) && (a.User2 == user1_id || a.User2 == user2_id));
             List<messages> messages = new List<messages>();
             foreach(var m in messagesWithUser)
             {
-                messages newMessage = new messages() { Message_ID = m.MessageID, Chat_ID = m.Chat_ID, IsRead = m.IsRead, From_User = m.From_User, Send_Date = m.Send_Date, Message = m.Message };
+                messages newMessage = new messages() { Message_ID = m.MessageID, Chat_ID = m.Chat_ID, IsRead = m.IsRead, From_User = m.From_User, Send_Date = m.Send_Date, Message = m.Message,From_UserName = m.From_UserName };
                 messages.Add(newMessage);
             }
             return messages;
@@ -72,11 +73,12 @@ namespace WcfService1
                 chatModelsContext.SaveChanges();
                 chatId = newChat.Chat_ID;
             }
-            messages newMessage = new messages() { Chat_ID = chat == null ? chatId : chat.Chat_ID, IsRead = false, From_User = From_User_ID, Message = message, Send_Date = DateTime.Now };
+            users user = chatModelsContext.users.Single(u => u.User_ID == From_User_ID); 
+            messages newMessage = new messages() { Chat_ID = chat == null ? chatId : chat.Chat_ID, IsRead = false, From_User = From_User_ID, Message = message, Send_Date = DateTime.Now,From_UserName = user.UserName };
             chatModelsContext.messages.Add(newMessage);
             chatModelsContext.SaveChanges();
-            messages mess = new messages() {Message_ID = newMessage.Message_ID, Chat_ID = newMessage.Chat_ID, IsRead = newMessage.IsRead, From_User = newMessage.From_User, Message = newMessage.Message,Send_Date = newMessage.Send_Date };
-            return mess;
+            return new messages() {Message_ID = newMessage.Message_ID, Chat_ID = newMessage.Chat_ID, IsRead = newMessage.IsRead, From_User = newMessage.From_User, Message = newMessage.Message,Send_Date = newMessage.Send_Date,From_UserName = newMessage.From_UserName };
+            
         }
     }
 }

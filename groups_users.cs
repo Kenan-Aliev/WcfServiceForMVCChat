@@ -11,9 +11,9 @@ namespace WcfService1
         [Key]
         public int Groups_Users_ID { get; set; }
 
-        public int? Group_ID { get; set; }
+        public int Group_ID { get; set; }
 
-        public int? User_ID { get; set; }
+        public int User_ID { get; set; }
 
         public virtual groups groups { get; set; }
 

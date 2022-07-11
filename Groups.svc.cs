@@ -11,7 +11,7 @@ namespace WcfService1
     // ПРИМЕЧАНИЕ. Чтобы запустить клиент проверки WCF для тестирования службы, выберите элементы Groups.svc или Groups.svc.cs в обозревателе решений и начните отладку.
     public class Groups : IGroups
     {
-        ChatDataBase chatModelsContext = new ChatDataBase();
+        ChatModels chatModelsContext = new ChatModels();
         public List<groups> GetUserGroups(int userID)
         {
             var groups = from gr in chatModelsContext.groups
@@ -50,10 +50,11 @@ namespace WcfService1
         public messages SendMessage(int groupId, int fromUserId,string message)
         {
             groups group = chatModelsContext.groups.Single(gr => gr.Group_ID == groupId);
-            messages newMessage = new messages() { Group_ID = group.Group_ID, From_User = fromUserId, Send_Date = DateTime.Now, Message = message, IsRead = false };
+            users user = chatModelsContext.users.Single(u => u.User_ID == fromUserId);
+            messages newMessage = new messages() { Group_ID = group.Group_ID, From_User = fromUserId, Send_Date = DateTime.Now, Message = message, IsRead = false,From_UserName = user.UserName };
             chatModelsContext.messages.Add(newMessage);
             chatModelsContext.SaveChanges();
-            return new messages() { Message_ID = newMessage.Message_ID,From_User = newMessage.From_User,Send_Date = newMessage.Send_Date,Message = newMessage.Message,IsRead = newMessage.IsRead};
+            return new messages() { Message_ID = newMessage.Message_ID,From_User = newMessage.From_User,Send_Date = newMessage.Send_Date,Message = newMessage.Message,IsRead = newMessage.IsRead,From_UserName = newMessage.From_UserName};
         }
 
         public List<messages> GetGroupMessages(int groupId)
@@ -67,7 +68,7 @@ namespace WcfService1
             List<messages> messagesList = new List<messages>();
             foreach(messages mess in messages)
             {
-                messages message = new messages() { Message_ID = mess.Message_ID, From_User = mess.From_User, Send_Date = mess.Send_Date, IsRead = mess.IsRead, Group_ID = mess.Group_ID, Message = mess.Message };
+                messages message = new messages() { Message_ID = mess.Message_ID, From_User = mess.From_User, Send_Date = mess.Send_Date, IsRead = mess.IsRead, Group_ID = mess.Group_ID, Message = mess.Message,From_UserName = mess.From_UserName };
                 messagesList.Add(message);
             }
             return messagesList;

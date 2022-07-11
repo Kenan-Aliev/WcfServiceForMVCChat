@@ -5,10 +5,10 @@ using System.Linq;
 
 namespace WcfService1
 {
-    public partial class ChatDataBase : DbContext
+    public partial class ChatModels : DbContext
     {
-        public ChatDataBase()
-            : base("name=ChatDataBase")
+        public ChatModels()
+            : base("name=ChatModels")
         {
         }
 
@@ -21,6 +21,11 @@ namespace WcfService1
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<groups>()
+                .HasMany(e => e.groups_users)
+                .WithRequired(e => e.groups)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<users>()
                 .HasMany(e => e.chats)
                 .WithRequired(e => e.users)
@@ -31,6 +36,11 @@ namespace WcfService1
                 .HasMany(e => e.chats1)
                 .WithRequired(e => e.users1)
                 .HasForeignKey(e => e.User_2)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<users>()
+                .HasMany(e => e.groups_users)
+                .WithRequired(e => e.users)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<users>()

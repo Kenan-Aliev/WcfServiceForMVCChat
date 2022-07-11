@@ -79,7 +79,7 @@
     <Compile Include="Auth.svc.cs">
       <DependentUpon>Auth.svc</DependentUpon>
     </Compile>
-    <Compile Include="ChatDataBase.cs" />
+    <Compile Include="ChatModels.cs" />
     <Compile Include="chats.cs" />
     <Compile Include="ChatService.svc.cs">
       <DependentUpon>ChatService.svc</DependentUpon>
