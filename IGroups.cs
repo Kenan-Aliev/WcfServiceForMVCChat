@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using WcfService1.ChatUOW.Entities;
 
 namespace WcfService1
 {
@@ -12,23 +13,23 @@ namespace WcfService1
     public interface IGroups
     {
         [OperationContract]
-        List<groups> GetUserGroups(int userID);
+        List<Group> GetUserGroups(int userID);
 
         [OperationContract]
         [FaultContract(typeof(ServiceError))]
-        groups CreateNewGroup(int userId ,string groupName);
+        Group CreateNewGroup(int userId ,string groupName);
 
         [OperationContract]
-        messages SendMessage(int groupId, int fromUserId,string message);
+        Messages SendMessage(int groupId, int fromUserId,string message);
 
         [OperationContract]
-        List<messages> GetGroupMessages(int groupId);
+        List<Messages> GetGroupMessages(int groupId);
 
         [OperationContract]
         [FaultContract(typeof(ServiceError))]
-        users AddUserToGroup(int userID, int groupID);
+        User AddUserToGroup(int userID, int groupID);
 
         [OperationContract]
-        List<users> GetGroupMembers(int groupId);
+        List<User> GetGroupMembers(int groupId);
     }
 }

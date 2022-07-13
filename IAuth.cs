@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using WcfService1.ChatUOW.Entities;
 
 namespace WcfService1
 {
@@ -13,11 +14,11 @@ namespace WcfService1
     {
         [OperationContract]
         [FaultContract(typeof(ServiceError))]
-        users Registration(users user);
+        User Registration(User user);
 
         [OperationContract]
         [FaultContract(typeof(ServiceError))]
-        users Login(users user);
+        User Login(User user);
     }
 
     [DataContract]

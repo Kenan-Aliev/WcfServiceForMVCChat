@@ -79,24 +79,33 @@
     <Compile Include="Auth.svc.cs">
       <DependentUpon>Auth.svc</DependentUpon>
     </Compile>
-    <Compile Include="ChatModels.cs" />
-    <Compile Include="chats.cs" />
+    <Compile Include="ChatUOW\EF\ChatContext.cs" />
+    <Compile Include="ChatUOW\Entities\Chat.cs" />
+    <Compile Include="ChatUOW\Entities\Group.cs" />
+    <Compile Include="ChatUOW\Entities\Group_Users.cs" />
+    <Compile Include="ChatUOW\Entities\Message.cs" />
+    <Compile Include="ChatUOW\Entities\User.cs" />
+    <Compile Include="ChatUOW\Interfaces\IChatRepository.cs" />
+    <Compile Include="ChatUOW\Interfaces\IGroupRepository.cs" />
+    <Compile Include="ChatUOW\Interfaces\IRepository.cs" />
+    <Compile Include="ChatUOW\Interfaces\IUnitOfWork.cs" />
+    <Compile Include="ChatUOW\Interfaces\IUserRepository.cs" />
+    <Compile Include="ChatUOW\Repositories\ChatRepository.cs" />
+    <Compile Include="ChatUOW\Repositories\EFUnitOfWork.cs" />
+    <Compile Include="ChatUOW\Repositories\GroupRepository.cs" />
+    <Compile Include="ChatUOW\Repositories\MessageRepository.cs" />
+    <Compile Include="ChatUOW\Repositories\UserRepository.cs" />
     <Compile Include="ChatService.svc.cs">
       <DependentUpon>ChatService.svc</DependentUpon>
     </Compile>
-    <Compile Include="groups.cs" />
     <Compile Include="Groups.svc.cs">
       <DependentUpon>Groups.svc</DependentUpon>
     </Compile>
-    <Compile Include="groups_users.cs" />
     <Compile Include="IAuth.cs" />
     <Compile Include="IChatService.cs" />
     <Compile Include="IGroups.cs" />
     <Compile Include="IUsers.cs" />
-    <Compile Include="messages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sysdiagrams.cs" />
-    <Compile Include="users.cs" />
     <Compile Include="Users.svc.cs">
       <DependentUpon>Users.svc</DependentUpon>
     </Compile>

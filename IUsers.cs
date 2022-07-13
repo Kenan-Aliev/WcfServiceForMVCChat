@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using WcfService1.ChatUOW.Entities;
 
 namespace WcfService1
 {
@@ -12,6 +13,6 @@ namespace WcfService1
     public interface IUsers
     {
         [OperationContract]
-        List<users> GetAllUsers(int mainUserID);
+        List<User> GetAllUsers(int mainUserID);
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using WcfService1.ChatUOW.Entities;
+using WcfService1.ChatUOW.Repositories;
 
 namespace WcfService1
 {
@@ -7,15 +9,17 @@ namespace WcfService1
     // ПРИМЕЧАНИЕ. Чтобы запустить клиент проверки WCF для тестирования службы, выберите элементы Users.svc или Users.svc.cs в обозревателе решений и начните отладку.
     public class Users : IUsers
     {
-        ChatModels chatModelsContext = new ChatModels();
+        //ChatModels chatModelsContext = new ChatModels();
 
-        public List<users> GetAllUsers(int mainUserID)
+        EFUnitOfWork chatContext = new EFUnitOfWork();
+
+        public List<User> GetAllUsers(int mainUserID)
         {
-            List<users> onlineUsers = chatModelsContext.users.Where(u => u.IsOnline == true && u.User_ID != mainUserID).ToList();
-            List<users> users = new List<users>();
-            foreach (users user in onlineUsers)
+            List<User> onlineUsers = chatContext.Users.GetAll().Where(u => u.IsOnline == true && u.User_ID != mainUserID).ToList();
+            List<User> users = new List<User>();
+            foreach (User user in onlineUsers)
             {
-                users User = new users() { User_ID = user.User_ID, UserName = user.UserName, IsOnline = user.IsOnline, Connection_Id = user.Connection_Id };
+                User User = new User() { User_ID = user.User_ID, UserName = user.UserName, IsOnline = user.IsOnline, Connection_Id = user.Connection_Id };
                 users.Add(User);
             }
             return users;

@@ -10,4 +10,3 @@ C:\Other\C#\WcfService1\obj\Debug\WcfService1.csproj.CoreCompileInputs.cache
 C:\Other\C#\WcfService1\obj\Debug\WcfService1.csproj.CopyComplete
 C:\Other\C#\WcfService1\obj\Debug\WcfService1.dll
 C:\Other\C#\WcfService1\obj\Debug\WcfService1.pdb
-C:\Other\C#\WcfService1\obj\Debug\WcfService1.csproj.AssemblyReference.cache

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using WcfService1.ChatUOW.Entities;
 
 namespace WcfService1
 {
@@ -12,18 +13,15 @@ namespace WcfService1
     public interface IChatService
     {
         [OperationContract]
-        users ClientConnected(string userName,string connectionId);
+        User ClientConnected(string userName,string connectionId);
 
         [OperationContract]
-        messages SendMessage(int ToUser_ID, string message, int From_User_ID);
+        Messages SendMessage(int ToUser_ID, string message, int From_User_ID);
 
         [OperationContract]
-        List<messages> GetAllMessagesWithUser(int user1_id,int user2_id);
+        List<Messages> GetAllMessagesWithUser(int user1_id,int user2_id);
 
         [OperationContract]
-        users ClientDisconnected(string ConnectionID);
-
-
-        
+        User ClientDisconnected(string ConnectionID);
     }
 }
